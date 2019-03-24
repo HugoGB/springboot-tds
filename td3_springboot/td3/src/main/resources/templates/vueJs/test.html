@@ -1,0 +1,17 @@
+{{>/vueJs/header}}
+<h1>Test VueJS</h1>
+	<%message%>
+	<br/>
+		<v-btn @click="update" color="success">Modifier</v-btn>
+		<v-btn @click="testAjax" color="warning">Test Ajax</v-btn>
+		<br>
+		<input v-model=inputValue color="blue" placeholder="Valeur à passer" type="text">
+	
+		<br><br>
+		<v-alert
+		:value="true"
+		type="success">
+		<%ajaxMessage%>
+		</v-alert>
+		
+{{>/vueJs/footer}}

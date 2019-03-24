@@ -1,0 +1,61 @@
+{{>header}}
+
+<div class="ui grid">
+	<div class="two column row">
+		<div class="column">
+			<i class="envelope icon"></i>
+		</div>
+		<div class="column">
+			<h1>SpringBoot TD2</h1>
+			<h3>Application de messagerie</h3>
+		</div>	
+	</div>	
+	<a href="create" class="ui grey button"><i class="plus square icon"></i>Ajouter une organisation</a>
+	<table class="ui bg-grey table rounded" style="padding-right:0px; padding-left:0px">
+		<thead class="ui border rounded" style="background-color:#a0a0a0;text:white;">
+			<td>Id</td>
+			<td>Name</td>
+			<td>Domain</td>
+			<td>Aliases</td>
+			<td> </td>			
+		</thead>
+		<tbody>
+			{{#orgas}}
+			<tr>
+				<td>{{id}} </td>
+				<td>{{name}} </td>
+				<td> {{domain}}</td>
+				<td>{{aliases}}</td>
+				<td>
+	        	<a href="/orgas/display/{{id}}">
+	        		
+	        		<button class="ui circular basic icon button">
+	        		<i class="eye icon"></i>
+	        		</button>	        			
+	        	</a>
+	        	<a href="/orgas/edit/{{id}}">
+	        		<button class="ui circular basic icon button">
+	        		<i class="edit icon"></i>
+	        		</button>
+	        	</a>
+	        	<a href="/orgas/delete/{{id}}">
+	        		<button class="ui circular basic red icon button">
+	        		<i class="times red icon"></i>
+	        		</button>
+	        	</a>
+	        </td>
+			</tr>
+			{{/orgas}}
+		</tbody>
+		<tfoot class="ui border rounded" style="background-color:#a0a0a0;">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td> </td>
+				
+			</tfoot>
+	</table>
+</div>
+
+{{>footer}}
