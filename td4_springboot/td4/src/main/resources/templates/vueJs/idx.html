@@ -1,0 +1,10 @@
+{{> /vueJs/header}}
+	      
+	<m-confirm-button title="Test de dialogue" 
+		:message="msg" cancelcaption="Cancel" validatecaption="Okay" @validation="validate" @cancellation="cancel"> 
+	</m-confirm-button>
+        
+	<m-data-table :items="items" :headers="headers">
+	</m-data-table>
+
+{{> /vueJS/footer}}

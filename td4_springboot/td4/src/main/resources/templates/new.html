@@ -1,0 +1,27 @@
+{{>header}}
+
+<div style="margin-top:50px;">
+	
+	<form class="ui form">
+	  <div class="field">
+	    <label>Name</label>
+	    <input placeholder="Name" value="{{name}}" type="text">
+	  </div>
+	  <div class="field">
+	    <label>Domain</label>
+	    <input placeholder="Domain" value="{{domain}}" type="text">
+	  </div>
+	  
+	  <div class="field">
+	    <label>Aliases</label>
+	    <input placeholder="Aliases" value="{{aliases}}" type="text">
+	  </div>
+	  <div style="border:solid; border-width:1px; padding:10px; border-color: #a0a0a0;">
+		  <button class="ui button green" type="submit">Validate</button>
+		  <button class="ui button" type="reset">Cancel</button>
+	  </div>	  
+	</form>
+	
+</div>
+
+{{>footer}}
