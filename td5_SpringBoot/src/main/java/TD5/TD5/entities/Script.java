@@ -16,14 +16,14 @@ public class Script {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "script")
+	private List<History> history;
+	
 	@ManyToOne
 	private Category category;
 	
 	@ManyToOne
 	private User user;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "script")
-	private List<History> history;
 	
 	@ManyToOne
 	private Language language;

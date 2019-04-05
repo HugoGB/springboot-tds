@@ -1,7 +1,7 @@
 {{ > header}}
 
 	<h2>Bienvenue {{user.identity}}. 
-	<br><a href="http://localhost:8080/logout">Déconnection</a></h2>
+	<a href="http://localhost:8080/logout">Déconnection</a></h2>
 	
 	<h3>Vos scripts : </h3>
 	
@@ -12,8 +12,6 @@
 				<th>Nom</th>
 				<th>Description</th>
 				<th>Date de création</th>
-				<th>Suppression</th>
-				<th>Modification</th>
 			</tr>
 		</thead>
 	
@@ -21,11 +19,9 @@
 			{{#user.scripts}}
 			<tr>
 				<td>{{id}}</td>
-				<td>{{title}}</td>
+				<td><a href="script/{{id}}">{{title}}</a></td>
 				<td>{{description}}</td>
 				<td>{{creationDate}}</td>
-				<td><a href="/script/{{id}}/delete">Supprimer</a></td>
-				<td><a href="/script/{{id}}/edit">Modifier</a></td>
 			</tr>
 			{{/user.scripts}}
 		</tbody>
