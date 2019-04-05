@@ -1,0 +1,45 @@
+{{ > header}}
+
+	<h2>Bienvenue {{user.identity}}</h2>
+	
+	<button class="ui neutral button">
+		<a href="http://localhost:8080/logout">Déconnection</a>
+	</button>
+	
+	<button class="ui neutral button">
+		<a href="http://localhost:8080/search">Page de recherche</a>
+	</button>
+	
+	<h3>Vos scripts : </h3>
+	
+	<table class="ui single-line table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Date de création</th>
+				<th>Suppression</th>
+				<th>Modification</th>
+			</tr>
+		</thead>
+	
+		<tbody>
+			{{#user.scripts}}
+			<tr>
+				<td>{{id}}</td>
+				<td>{{title}}</td>
+				<td>{{description}}</td>
+				<td>{{creationDate}}</td>
+				<td><a href="/script/{{id}}/delete">Supprimer</a></td>
+				<td><a href="/script/{{id}}/edit">Modifier</a></td>
+			</tr>
+			{{/user.scripts}}
+		</tbody>
+	</table>
+	
+	<button class="ui neutral button">
+		<a href="http://localhost:8080/script/new">Ajouter un script</a>
+	</button>
+
+{{ > footer}}

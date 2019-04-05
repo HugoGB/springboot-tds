@@ -1,0 +1,84 @@
+{{ > header}}
+
+	<h2>Bienvenue {{user.identity}}</h2>
+	
+	<button class="ui neutral button">
+		<a href="http://localhost:8080/logout">Déconnection</a>
+	</button>
+	
+	<button class="ui neutral button">
+		<a href="http://localhost:8080/index">Page d'accueil</a>
+	</button>
+	
+	<h3>Trier par : </h3>
+	
+	<form class="ui fluid form">
+        <div class="field">
+           	Titre &nbsp;<input type="checkbox" name="searchOptions[]" id="title" value="title" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           	Description &nbsp;<input type="checkbox" name="searchOptions[]" id="description" value="description" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           	Date de Creation &nbsp;<input type="checkbox" name="searchOptions[]" id="creationDate" value="creationDate" />
+        </div>
+
+		<div class="field">
+			<input type="text" name="search" id="search" onInput="fire_ajax_submit()"/>
+		</div>
+	</form>
+	
+	<table class="ui single-line table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Description</th>
+	            <th>Creation date</th>
+			</tr>
+		</thead>
+	
+		<tbody id="scripts">
+			{{#scriptsTrouves}}
+				<tr>
+					<td>{{id}}</td>
+					<td><a href="/script/{{id}}/edit">{{title}}</a></td>
+					<td>{{description}}</td>
+                    <td>{{creationDate}}</td>
+				</tr>
+			{{/scriptsTrouves}}
+		</tbody>
+	</table>
+	
+	<button class="ui neutral button">
+		<a href="http://localhost:8080/script/new">Add a script</a>
+	</button>	
+	
+	<script type="text/javascript">
+		function fire_ajax_submit() {
+	        var search = $("#search").val();
+	        var searchOptions = "searchOptions=";        
+	        var cols = document.getElementsByName('searchOptions[]');
+	
+	        for(i = 0; i < cols.length; i++){
+	            if(cols[i].checked){
+	                searchOptions += cols[i].value+",";
+	            }
+	        }
+	
+	        console.log(searchOptions);
+	
+		    $.ajax({
+		        type: "POST",
+		        contentType: "application/x-www-form-urlencoded",
+		        url: "http://localhost:8080/rest/{{user.id}}",
+		        data: "search="+search+"&"+searchOptions,
+		        cache: false,
+		        timeout: 600000,
+		        success: function (data) {	            
+		            document.getElementById('scripts').innerHTML = data;
+		        },
+		        error: function (e) {
+		            console.log("ERROR : ", e);
+		        }
+		    });
+		}
+	</script>
+
+{{ > footer}}
